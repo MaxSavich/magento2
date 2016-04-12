@@ -156,7 +156,18 @@ class Session extends \Magento\Framework\Session\SessionManager implements \Mage
      */
     public function isLoggedIn()
     {
-        return $this->getUser() && $this->getUser()->getId();
+        $lifetime = $this->_config->getValue(self::XML_PATH_SESSION_LIFETIME);
+        $currentTime = time();
+
+        /* Validate admin session lifetime that should be more than 60 seconds */
+        if ($lifetime >= 60 && $this->getUpdatedAt() < $currentTime - $lifetime) {
+            return false;
+        }
+
+        if ($this->getUser() && $this->getUser()->getId()) {
+            return true;
+        }
+        return false;
     }
 
     /**
