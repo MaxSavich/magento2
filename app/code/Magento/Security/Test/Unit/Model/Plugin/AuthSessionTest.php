@@ -162,7 +162,7 @@ class AuthSessionTest extends \PHPUnit_Framework_TestCase
         };
 
         $this->currentSessionMock->expects($this->any())
-            ->method('isActive')
+            ->method('isLoggedInStatus')
             ->willReturn(false);
 
         $this->authSessionMock->expects($this->once())

@@ -61,7 +61,7 @@ class AuthSession
     public function aroundProlong(Session $session, \Closure $proceed)
     {
         if (!$this->isSessionCheckRequest()) {
-            if (!$this->sessionsManager->getCurrentSession()->isActive()) {
+            if (!$this->sessionsManager->getCurrentSession()->isLoggedInStatus()) {
                 $session->destroy();
                 $this->addUserLogoutNotification();
                 return null;
