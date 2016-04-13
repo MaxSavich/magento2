@@ -7,6 +7,7 @@ namespace Magento\Backend\Model\Auth;
 
 /**
  * @magentoAppArea adminhtml
+ * @magentoAppIsolation enabled
  */
 class SessionTest extends \PHPUnit_Framework_TestCase
 {
