@@ -167,6 +167,7 @@ class Session extends \Magento\Framework\Session\SessionManager implements \Mage
         if ($this->getUser() && $this->getUser()->getId()) {
             return true;
         }
+
         return false;
     }
 
